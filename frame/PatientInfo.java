@@ -11,10 +11,10 @@ public class PatientInfo extends JFrame implements ActionListener,MouseListener
 {
 	JLabel lblName,lblAge,lblGander,lblContact,lblAdress,lblBack,lblAllPatientList,lblID;
 	JTextField txtName,txtAge,txtGander,txtContact,txtAdress,txtID;
-	JButton btnSearch,btnDelete,btnDoctor,btnPatient,btnGetAll,btnHome;
-	Font myFont,txtFont,btnFont,patientListFont;
+	JButton btnSearch,btnDelete,btnDoctor,btnPatient,btnGetAll,btnHome,btnLogout,btnSettings;
+	Font myFont,txtFont,btnFont,patientListFont,fntmain;
 	JComboBox cmboGander;
-	Color clrDoctor,clrPatient,clrSelect,clrDelete,clrSearch;
+	Color clrDoctor,clrPatient,clrSelect,clrDelete,clrSearch,backColor;
 	JTable patientTable;
 	JScrollPane patientSP;
 	Admin a;
@@ -72,12 +72,7 @@ public class PatientInfo extends JFrame implements ActionListener,MouseListener
 		panel.add(btnPatient);
 
 
-		lblBack = new JLabel();
-		lblBack.setBounds(10,5,960,35);
-		lblBack.setBackground(Color.GRAY);
-		lblBack.setOpaque(true);
-		panel.add(lblBack);
-
+		
 		lblID = new JLabel("ID "); //Label for Name///
 		lblID.setBounds(25,60,60,35);
 		panel.add(lblID);
@@ -136,11 +131,6 @@ public class PatientInfo extends JFrame implements ActionListener,MouseListener
 		txtAdress.setFont(txtFont);
 		panel.add(txtAdress);
 
-		btnHome = new JButton("Home");
-	    btnHome.setBounds(730,8,70,27);
-	    btnHome.addActionListener(this);
-	    panel.add(btnHome);
-
 
 		clrDelete = new Color(109,35,21);
 		btnDelete = new JButton("Delete");
@@ -177,6 +167,48 @@ public class PatientInfo extends JFrame implements ActionListener,MouseListener
 		lblAllPatientList.setBounds(600,60,250,40);
 		lblAllPatientList.setFont(patientListFont);
 		panel.add(lblAllPatientList);
+
+		//Nevigation Bar
+
+		fntmain = new Font("Agency FB",Font.BOLD,13);
+		
+		backColor = new Color(83, 126, 106);
+		
+		
+		
+		
+		btnHome = new JButton("Home");
+	    btnHome.setBounds(740,8,70,27);
+	    btnHome.setFont(fntmain);
+	    btnHome.setForeground(Color.WHITE);
+	    btnHome.setBackground(backColor);
+	    btnHome.addActionListener(this);
+	    panel.add(btnHome);
+
+	    btnSettings = new JButton("Setting");
+	    btnSettings.setBounds(810,8,70,27);
+	    btnSettings.setFont(fntmain);
+	    btnSettings.setForeground(Color.WHITE);
+	    btnSettings.setBackground(backColor);
+	    btnSettings.addActionListener(this);
+	    panel.add(btnSettings);
+
+	    btnLogout = new JButton("Logout");
+	    btnLogout.setBounds(880,8,70,27);
+	    btnLogout.setFont(fntmain);
+	    btnLogout.setForeground(Color.WHITE);
+	    btnLogout.setBackground(backColor);
+	    btnLogout.addActionListener(this);
+	    panel.add(btnLogout);
+
+		lblBack = new JLabel();
+		lblBack.setBounds(10,5,960,35);
+		lblBack.setBackground(Color.GRAY);
+		lblBack.setOpaque(true);
+		panel.add(lblBack);
+
+		btnDelete.setEnabled(false);
+
 		
 
 		this.add(panel);
@@ -243,8 +275,8 @@ public class PatientInfo extends JFrame implements ActionListener,MouseListener
 		}
 		else if(command.equals(btnSearch.getText()))
 		{
+			btnDelete.setEnabled(true);
 			if(!txtID.getText().equals("") || !txtID.getText().equals(null))
-			//if(!txtID.getText().equals("") || !txtID.getText().equals(null))
 			{
 				Patient p = pr.searchPatient(txtID.getText());
 				if(p != null)
@@ -264,6 +296,7 @@ public class PatientInfo extends JFrame implements ActionListener,MouseListener
 
 		else if(command.equals(btnDelete.getText()))
 		{
+			
 			pr.deleteInDB(txtID.getText());
 			ur.deleteUser(txtID.getText());
 
@@ -295,11 +328,27 @@ public class PatientInfo extends JFrame implements ActionListener,MouseListener
 	
 
 		}
-		else if(command.equals(btnHome.getText()))
+		else if(command.equals(btnLogout.getText()))
 		{
 			Login g1 = new Login();
 			this.setVisible(false);
 		}
+
+		else if(command.equals(btnHome.getText()))
+		{
+			Home h = new Home();
+			h.setVisible(true);
+			this.setVisible(false);
+		}
+
+		/*else if(command.equals(btnSettings.getText()))
+		{
+			Setting s = new Setting();
+			s.setVisible(true);
+			this.setVisible(false);
+		}*/
+
+
 	}
 
 }

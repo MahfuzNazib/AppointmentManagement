@@ -277,6 +277,11 @@ public class Admin extends JFrame implements ActionListener,MouseListener
 		lblBack.setBackground(Color.GRAY);
 		lblBack.setOpaque(true);
 		panelDoctor.add(lblBack);
+
+		//Button Desabled Code (For Update & Delete Button)
+
+		btnUpdate.setEnabled(false);
+		btnDelete.setEnabled(false);
 		
 		
 		
@@ -362,6 +367,8 @@ public class Admin extends JFrame implements ActionListener,MouseListener
 		}
 		else if(command.equals(btnInsert.getText()))
 		{
+			
+
 			Doctor d = new Doctor();
 			User u = new User();
 			Random rd = new Random();
@@ -426,6 +433,11 @@ public class Admin extends JFrame implements ActionListener,MouseListener
 					JOptionPane.showMessageDialog(this,"Invaild ID");
 				}*/
 			}
+
+			//Button Enabled
+
+			btnUpdate.setEnabled(true);
+			btnDelete.setEnabled(true);
 		}
 
 		else if(command.equals(btnUpdate.getText()))
