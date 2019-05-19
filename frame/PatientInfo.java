@@ -341,12 +341,12 @@ public class PatientInfo extends JFrame implements ActionListener,MouseListener
 			this.setVisible(false);
 		}
 
-		/*else if(command.equals(btnSettings.getText()))
+		else if(command.equals(btnSettings.getText()))
 		{
-			Setting s = new Setting();
+			Settings s = new Settings();
 			s.setVisible(true);
 			this.setVisible(false);
-		}*/
+		}
 
 
 	}

@@ -412,7 +412,7 @@ public class Admin extends JFrame implements ActionListener,MouseListener
 		else if(command.equals(btnSearch.getText()))
 		{
 			if(!txtID.getText().equals("") || !txtID.getText().equals(null))
-			//if(!txtID.getText().equals("") || !txtID.getText().equals(null))
+			
 			{
 				Doctor d = dr.searchDoctor(txtID.getText());
 				if(d != null)
@@ -513,14 +513,26 @@ public class Admin extends JFrame implements ActionListener,MouseListener
 
 		}
 
-		else if(command.equals(btnHome.getText()))
+		else if(command.equals(btnLogout.getText()))
 		{
 			Login g1 = new Login();
 			this.setVisible(false);
-			//g1.setVisible(true);
+			
 		}
 
+		else if(command.equals(btnHome.getText()))
+		{
+			Home h = new Home();
+			h.setVisible(true);
+			this.setVisible(false);
+		}
 
+		else if(command.equals(btnSettings.getText()))
+		{
+			Settings s = new Settings();
+			s.setVisible(true);
+			this.setVisible(false);
+		}
 		
 	}
 }

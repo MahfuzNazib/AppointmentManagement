@@ -18,7 +18,7 @@ public class DoctorHome extends JFrame implements ActionListener
 	JButton btnAll,btnHome,btnLogout,btnSettings,btnCheckout,btnClearAll;
 	JPanel panel;
 	JTable docTable1;
-	Color backColor;
+	Color backColor,colorGetAll,colorCheckOut;
 	Font fntmain,gfont;
 	JScrollPane docTableSP1;
 
@@ -93,11 +93,17 @@ public class DoctorHome extends JFrame implements ActionListener
 
 	
 	    btnAll = new JButton("GetAll");
+	    colorGetAll = new Color(71,6,114);
+		btnAll.setBackground(colorGetAll);
+		btnCheckout.setForeground(Color.WHITE);
 		btnAll.setBounds(300,460,120,40);
 	    btnAll.addActionListener(this);
 		panel.add(btnAll);
 
 		btnCheckout = new JButton("CheckOut");
+		colorCheckOut = new Color(18,107,101);
+		btnCheckout.setBackground(colorCheckOut);
+		btnCheckout.setForeground(Color.WHITE);
 		btnCheckout.setBounds(450,460,120,40);
 	    btnCheckout.addActionListener(this);
 		panel.add(btnCheckout);
@@ -144,6 +150,22 @@ public class DoctorHome extends JFrame implements ActionListener
 			h.setVisible(true);
 			this.setVisible(false);
 		}
+
+		/*else if(ae.getSource() == btnSettings)
+		{
+			Settings s = new Settings();
+			s.setVisible(true);
+			this.setVisible(false); 
+		}*/
+
+		else if(command.equals(btnSettings.getText()))
+		{
+			Settings s = new Settings();
+			s.setVisible(true);
+			this.setVisible(false); 
+		}
+
+		else{}
 
 	}
 	

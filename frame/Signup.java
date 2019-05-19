@@ -159,21 +159,22 @@ public class Signup extends JFrame implements ActionListener
 	    //Navigation Bar
 
 	    btnHome = new JButton("Home");
-	    btnHome.setBounds(740,8,70,27);
+	    btnHome.setBounds(810,8,70,27);
 	    btnHome.setFont(fntmain);
 	    btnHome.setForeground(Color.WHITE);
 	    btnHome.setBackground(backColor);
 	    btnHome.addActionListener(this);
 	    panel.add(btnHome);
 
-	    btnSettings = new JButton("Setting");
+	    /*btnSettings = new JButton("Logout");
 	    btnSettings.setBounds(810,8,70,27);
 	    btnSettings.setFont(fntmain);
 	    btnSettings.setForeground(Color.WHITE);
 	    btnSettings.setBackground(backColor);
 	    btnSettings.addActionListener(this);
 	    panel.add(btnSettings);
-
+		*/
+		
 	    btnLogout = new JButton("Logout");
 	    btnLogout.setBounds(880,8,70,27);
 	    btnLogout.setFont(fntmain);
@@ -217,7 +218,8 @@ public class Signup extends JFrame implements ActionListener
         Random rd = new Random();
 
         int x = rd.nextInt(9999999)+10000000;
-        String id = "p-"+fnamefld.getText();
+        int y = rd.nextInt(999)+1000;
+        String id = "p-"+fnamefld.getText()+String.valueOf(y); //New Add
         String Password = String.valueOf(x);
 
         p.setPId(id);
@@ -244,11 +246,27 @@ public class Signup extends JFrame implements ActionListener
 		ganderfld.setText("");
     }
 
-   
-    else if(ae.getSource()==btnHome)
+   		//Not Neccessary Code In this Code of Block.
+    	/*else if(ae.getSource()==btnHome)
     	{
     		Login g1 = new Login();
 			this.setVisible(false);
-    	}
-	}//actionPerformed
-}//class
+    	}*/
+    	else if(command.equals(btnLogout.getText()))
+		{
+			Login g1 = new Login();
+			this.setVisible(false);
+			
+		}
+
+		else if(command.equals(btnHome.getText()))
+		{
+			Home h = new Home();
+			h.setVisible(true);
+			this.setVisible(false);
+		}
+
+		
+
+	}	//actionPerformed
+}	//class

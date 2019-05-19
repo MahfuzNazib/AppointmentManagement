@@ -10,7 +10,7 @@ import repository.*;
 public class PatientHome extends JFrame implements ActionListener
 {
 	
-	JLabel lblSelect, lblReason, lblDate, lblTime,lblBack,pntHomePage;
+	JLabel lblSelect, lblReason, lblDate, lblTime,lblBack,pntHomePage,lblup;
 	JTextField  txtDate,txtDoctor,txtReason,txtTime;
 	JButton btnConfirm, btnRefresh, btnHome, btnLogout,btnGetAll,btnSettings;
 	//JComboBox cmbTime, cmbDoctor, cmbReason;
@@ -18,7 +18,7 @@ public class PatientHome extends JFrame implements ActionListener
     Color backColor;
     JTable docListTable;
     JScrollPane docListSP;
-	Font Font, fntmain,fntPage;
+	Font Font, fntmain,fntPage,gfont;
 	String id;
 	User user;
 	UserRepo ur;
@@ -57,8 +57,13 @@ public class PatientHome extends JFrame implements ActionListener
 		
 		//All Jlabel
 		
-		
-		
+		gfont = new Font("Chaparral Pro Light", Font.BOLD , 15);
+
+		lblup = new JLabel("Patient Sign Up");
+		lblup.setBounds(10,0,450,30);
+		lblup.setForeground(Color.WHITE);
+		lblup.setFont(gfont);
+		panel.add(lblup);
 		
 		lblSelect = new JLabel("Select Doctor  :");
 	    lblSelect.setBounds(60,100,180,30);
@@ -159,8 +164,8 @@ public class PatientHome extends JFrame implements ActionListener
 		panel.add(txtReason);
 
 		lblBack = new JLabel();
-		lblBack.setBounds(0,0,1000,30);
-	    lblBack.setBackground(backColor);
+		lblBack.setBounds(0,5,1000,35);
+	    lblBack.setBackground(Color.BLACK);
 		lblBack.setOpaque(true);
 		panel.add(lblBack);
 		
@@ -207,6 +212,13 @@ public class PatientHome extends JFrame implements ActionListener
 		{
 			Home h = new Home();
 			h.setVisible(true);
+			this.setVisible(false);
+		}
+
+		else if(command.equals(btnSettings.getText()))
+		{
+			Settings s = new Settings();
+			s.setVisible(true);
 			this.setVisible(false);
 		}
 	}
